@@ -24,8 +24,9 @@ const App = () => {
 
   return (
     // The main application container with a light gray background and a modern font.
+    // We've added "light" to the className to force light mode and override OS settings.
     // It's a flexbox column to ensure the header, main content, and footer are stacked.
-    <div className="flex flex-col min-h-screen bg-pink-50 font-sans text-gray-800">
+    <div className="light flex flex-col min-h-screen bg-pink-50 font-sans text-gray-800">
       <header className="bg-white shadow-lg p-4">
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-4">
           {/* Main logo and title for the bakery */}
