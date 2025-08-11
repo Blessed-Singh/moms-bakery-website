@@ -87,22 +87,22 @@ const App = () => {
 const HomePage = ({ setCurrentPage }) => {
   const reviews = [
     {
-      name: "Sarah M.",
+      name: "Puranjay Malik",
       rating: 5,
-      text: "The most delicious eggless cake I've ever had! Perfect for my daughter's birthday.",
-      date: "2 weeks ago"
+      text: "This is my goto place to get cake for every occasion and it’s absolutely delicious. I haven’t ate this type of cake in my life.",
+      date: "2 months ago"
     },
     {
-      name: "Rajesh P.",
+      name: "Komal Agarwal",
       rating: 5,
-      text: "Amazing quality and taste. The custom design was exactly what we wanted!",
-      date: "1 month ago"
+      text: "I ordered a butterscotch cake from Ammy Bakers111 and it was hands down one of the best eggless cakes we've ever had! The buttercream was perfectly balanced—not too sweet—and 		the flavor was just right. All of our guests absolutely loved it! Ammy is not only talented but also incredibly sweet and attentive. She kept me updated with pictures and 		videos throughout the process, making sure every detail was perfect, from the making to the final look of the cake. I highly recommend her cakes and will definitely be 		ordering more from her in the future!",
+      date: "5 days ago"
     },
     {
-      name: "Maria L.",
+      name: "Vanshika Mehta",
       rating: 5,
-      text: "Fresh, beautiful, and so tasty! Will definitely order again.",
-      date: "3 weeks ago"
+      text: "Best cake in affordable price you can get here . The quality, taste and services all were good thanks",
+      date: "4 months ago"
     }
   ];
 
@@ -217,7 +217,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Chocolate",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/YT1k9fhn/chocolate-CAKE.webp",
       description: "Rich, moist chocolate cake with premium cocoa"
     },
     {
@@ -225,7 +225,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Vanilla",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/R4gfwqjn/vanilla-CAKE.webp",
       description: "Classic vanilla sponge with smooth vanilla frosting"
     },
     {
@@ -233,7 +233,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Red Velvet",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/wh6M4Vdm/image.png",
       description: "Elegant red velvet with cream cheese frosting"
     },
     {
@@ -241,7 +241,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Butterscotch",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/fZYVwgp/image.png",
       description: "Sweet butterscotch cake with caramel notes"
     },
     {
@@ -249,7 +249,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Mix Fruit",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/5XBLxy2j/image.png",
       description: "Fresh fruit cake with seasonal fruits"
     },
     {
@@ -257,7 +257,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Strawberry",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/hxB3BhqB/image.png",
       description: "Fresh strawberry cake with strawberry compote"
     },
     {
@@ -265,7 +265,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Mango",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1557142046-c704a3adf364?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/d01HH81M/image.png",
       description: "Tropical mango cake with mango frosting"
     },
     {
@@ -273,7 +273,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Lotus Biscoff",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/0wBXgjH/image.png",
       description: "Cookie butter cake with Lotus Biscoff crumbs"
     },
     {
@@ -281,7 +281,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Black Forest",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/LD9hxpmy/image.png",
       description: "Chocolate cake with cherries and whipped cream"
     },
     {
@@ -289,7 +289,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Dry Cake",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/MyvRbx76/image.png",
       description: "Traditional dry cake perfect for tea time"
     },
     {
@@ -297,7 +297,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Rasmalai Cake",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/B5M5dsXq/image.png",
       description: "Indian fusion cake with rasmalai flavors"
     },
     {
@@ -305,7 +305,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Gulab Jamun Cake",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/sJHPMTF9/image.png",
       description: "Sweet gulab jamun flavored cake"
     },
     {
@@ -313,7 +313,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Rose Cake",
       basePrice: 45,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/zVDjXZGc/image.png",
       description: "Delicate rose flavored cake with floral notes"
     },
     {
@@ -321,7 +321,7 @@ const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
       name: "Cheesecake",
       basePrice: 55,
       cheesecakePrice: 55,
-      image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&h=400&fit=crop&crop=center",
+      image: "https://i.ibb.co/Y7RmZ4Yv/image.png",
       description: "Creamy, rich cheesecake - our special recipe",
       special: true
     }
