@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import { Home, Cake, Mail, MapPin, Phone, Instagram, Star, Plus, Minus, Upload, MessageCircle, Heart, Users, Layers } from 'lucide-react';
+import { Home, Cake, Mail, MapPin, Phone, Instagram, Star, Plus, Minus, Upload, MessageCircle, Heart, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedCake, setSelectedCake] = useState(null);
   const [cakeBuilder, setCakeBuilder] = useState({
     size: '6-inch',
-    layers: 2,
-    servings: '6-8',
+    servings: '5-6',
     flavor: '',
-    description: '',
-    images: []
+    description: ''
   });
 
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
         return <HomePage setCurrentPage={setCurrentPage} />;
-      case 'menu':
-        return <MenuPage setSelectedCake={setSelectedCake} setCurrentPage={setCurrentPage} />;
+      case 'gallery':
+        return <GalleryPage setSelectedCake={setSelectedCake} setCurrentPage={setCurrentPage} />;
       case 'contact':
         return <ContactPage />;
       case 'builder':
@@ -34,7 +32,7 @@ const App = () => {
       <header className="bg-white shadow-lg sticky top-0 z-50">
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
           <div className="text-3xl font-extrabold text-pink-600 tracking-wider cursor-pointer" onClick={() => setCurrentPage('home')}>
-            Ammy Bakers 🎂
+            Ammy Bakers 111 🎂
           </div>
           
           <div className="hidden md:flex space-x-8 items-center">
@@ -47,12 +45,12 @@ const App = () => {
               <span>Home</span>
             </button>
             <button 
-              onClick={() => setCurrentPage('menu')} 
+              onClick={() => setCurrentPage('gallery')} 
               className={`flex items-center space-x-2 text-lg font-medium transition duration-300 transform hover:scale-110 hover:text-pink-600 
-                ${currentPage === 'menu' ? 'text-pink-600 font-bold border-b-2 border-pink-600 pb-1' : 'text-gray-600'}`}
+                ${currentPage === 'gallery' ? 'text-pink-600 font-bold border-b-2 border-pink-600 pb-1' : 'text-gray-600'}`}
             >
               <Cake className="w-5 h-5" />
-              <span>Menu</span>
+              <span>Cake Gallery</span>
             </button>
             <button 
               onClick={() => setCurrentPage('contact')} 
@@ -65,7 +63,7 @@ const App = () => {
           </div>
           
           {/* WhatsApp Button */}
-          <a href="https://wa.me/1234567890" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 transition duration-300 transform hover:scale-105">
+          <a href="https://wa.me/14274301131" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 transition duration-300 transform hover:scale-105">
             <MessageCircle className="w-4 h-4" />
             <span className="hidden sm:inline">WhatsApp</span>
           </a>
@@ -78,7 +76,7 @@ const App = () => {
 
       <footer className="bg-gradient-to-r from-pink-600 to-rose-600 text-white p-6 text-center">
         <div className="max-w-7xl mx-auto">
-          <p className="text-lg font-medium">&copy; {new Date().getFullYear()} Ammy Bakers. All rights reserved.</p>
+          <p className="text-lg font-medium">&copy; {new Date().getFullYear()} Ammy Bakers 111. All rights reserved.</p>
           <p className="text-pink-100 mt-2">Baked with love, served with pride 💖</p>
         </div>
       </footer>
@@ -114,17 +112,17 @@ const HomePage = ({ setCurrentPage }) => {
       <section className="relative bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-6xl font-extrabold mb-6 leading-tight">
-            Welcome to Ammy Bakers
+            Welcome to Ammy Bakers 111
           </h1>
           <p className="text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
             Crafting delicious, fresh, and completely eggless cakes made with love for every special occasion
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => setCurrentPage('menu')}
+              onClick={() => setCurrentPage('gallery')}
               className="bg-white text-pink-600 px-8 py-4 rounded-full text-xl font-bold hover:bg-pink-50 transform hover:scale-105 transition duration-300 shadow-lg"
             >
-              View Our Menu
+              View Cake Gallery
             </button>
             <button 
               onClick={() => setCurrentPage('contact')}
@@ -139,7 +137,7 @@ const HomePage = ({ setCurrentPage }) => {
       {/* About Section */}
       <section className="max-w-7xl mx-auto px-6">
         <div className="bg-white rounded-3xl shadow-xl p-12 transform hover:scale-105 transition duration-500">
-          <h2 className="text-4xl font-bold text-pink-700 mb-8 text-center">Why Choose Ammy Bakers?</h2>
+          <h2 className="text-4xl font-bold text-pink-700 mb-8 text-center">Why Choose Ammy Bakers 111?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="bg-pink-100 p-6 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center">
@@ -152,7 +150,7 @@ const HomePage = ({ setCurrentPage }) => {
               <div className="bg-pink-100 p-6 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center">
                 <Cake className="w-12 h-12 text-pink-500" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Made Fresh</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">Made Fresh Daily</h3>
               <p className="text-gray-600">Everything is baked fresh to order with the finest ingredients and lots of love.</p>
             </div>
             <div className="text-center p-6">
@@ -160,7 +158,7 @@ const HomePage = ({ setCurrentPage }) => {
                 <Users className="w-12 h-12 text-pink-500" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">Custom Designs</h3>
-              <p className="text-gray-600">We create personalized cakes for every occasion - birthdays, weddings, and more!</p>
+              <p className="text-gray-600">We create personalized cakes for every occasion - 3 layers, cream decorations included!</p>
             </div>
           </div>
         </div>
@@ -191,17 +189,17 @@ const HomePage = ({ setCurrentPage }) => {
       <section className="max-w-7xl mx-auto px-6">
         <div className="bg-gradient-to-r from-pink-500 to-rose-500 rounded-3xl text-white p-12 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Order Your Perfect Cake?</h2>
-          <p className="text-xl mb-8">Contact us on WhatsApp for custom orders or browse our delicious menu!</p>
+          <p className="text-xl mb-8">Contact us on WhatsApp for custom orders or browse our delicious cake gallery!</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/1234567890" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full text-xl font-bold transform hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+            <a href="https://wa.me/14274301131" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full text-xl font-bold transform hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
               <MessageCircle className="w-6 h-6" />
               <span>WhatsApp Us</span>
             </a>
             <button 
-              onClick={() => setCurrentPage('menu')}
+              onClick={() => setCurrentPage('gallery')}
               className="bg-white text-pink-600 px-8 py-4 rounded-full text-xl font-bold hover:bg-pink-50 transform hover:scale-105 transition duration-300"
             >
-              Browse Menu
+              Browse Gallery
             </button>
           </div>
         </div>
@@ -210,52 +208,132 @@ const HomePage = ({ setCurrentPage }) => {
   );
 };
 
-const MenuPage = ({ setSelectedCake, setCurrentPage }) => {
+const GalleryPage = ({ setSelectedCake, setCurrentPage }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const cakes = [
     {
       id: 1,
-      name: "Chocolate Delight",
-      basePrice: 50,
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop&crop=center",
-      description: "Rich, moist chocolate cake with premium cocoa",
-      popular: true
+      name: "Chocolate",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      description: "Rich, moist chocolate cake with premium cocoa"
     },
     {
       id: 2,
-      name: "Vanilla Dream",
+      name: "Vanilla",
       basePrice: 45,
-      image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop&crop=center",
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&h=400&fit=crop&crop=center",
       description: "Classic vanilla sponge with smooth vanilla frosting"
     },
     {
       id: 3,
-      name: "Red Velvet Romance",
-      basePrice: 55,
-      image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=400&h=300&fit=crop&crop=center",
+      name: "Red Velvet",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&h=400&fit=crop&crop=center",
       description: "Elegant red velvet with cream cheese frosting"
     },
     {
       id: 4,
-      name: "Strawberry Bliss",
-      basePrice: 60,
-      image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop&crop=center",
-      description: "Fresh strawberry cake with strawberry compote"
+      name: "Butterscotch",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=500&h=400&fit=crop&crop=center",
+      description: "Sweet butterscotch cake with caramel notes"
     },
     {
       id: 5,
-      name: "Lemon Zest",
-      basePrice: 48,
-      image: "https://images.unsplash.com/photo-1519869325930-281384150729?w=400&h=300&fit=crop&crop=center",
-      description: "Tangy lemon cake with lemon buttercream"
+      name: "Mix Fruit",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&h=400&fit=crop&crop=center",
+      description: "Fresh fruit cake with seasonal fruits"
     },
     {
       id: 6,
-      name: "Funfetti Celebration",
-      basePrice: 52,
-      image: "https://images.unsplash.com/photo-1558312657-b2dead2bc985?w=400&h=300&fit=crop&crop=center",
-      description: "Colorful birthday cake with rainbow sprinkles"
+      name: "Strawberry",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&h=400&fit=crop&crop=center",
+      description: "Fresh strawberry cake with strawberry compote"
+    },
+    {
+      id: 7,
+      name: "Mango",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1557142046-c704a3adf364?w=500&h=400&fit=crop&crop=center",
+      description: "Tropical mango cake with mango frosting"
+    },
+    {
+      id: 8,
+      name: "Lotus Biscoff",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      description: "Cookie butter cake with Lotus Biscoff crumbs"
+    },
+    {
+      id: 9,
+      name: "Black Forest",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&h=400&fit=crop&crop=center",
+      description: "Chocolate cake with cherries and whipped cream"
+    },
+    {
+      id: 10,
+      name: "Dry Cake",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      description: "Traditional dry cake perfect for tea time"
+    },
+    {
+      id: 11,
+      name: "Rasmalai Cake",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&h=400&fit=crop&crop=center",
+      description: "Indian fusion cake with rasmalai flavors"
+    },
+    {
+      id: 12,
+      name: "Gulab Jamun Cake",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop&crop=center",
+      description: "Sweet gulab jamun flavored cake"
+    },
+    {
+      id: 13,
+      name: "Rose Cake",
+      basePrice: 45,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&h=400&fit=crop&crop=center",
+      description: "Delicate rose flavored cake with floral notes"
+    },
+    {
+      id: 14,
+      name: "Cheesecake",
+      basePrice: 55,
+      cheesecakePrice: 55,
+      image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&h=400&fit=crop&crop=center",
+      description: "Creamy, rich cheesecake - our special recipe",
+      special: true
     }
   ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % Math.ceil(cakes.length / 3));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + Math.ceil(cakes.length / 3)) % Math.ceil(cakes.length / 3));
+  };
 
   const handleCakeSelect = (cake) => {
     setSelectedCake(cake);
@@ -265,48 +343,89 @@ const MenuPage = ({ setSelectedCake, setCurrentPage }) => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-pink-700 mb-6">Our Delicious Menu</h1>
+        <h1 className="text-5xl font-bold text-pink-700 mb-6">Cake Gallery</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          All our cakes are 100% eggless and baked fresh to order. Click on any cake to customize your perfect order!
+          All our cakes are 100% eggless, made with 3 layers, and baked fresh to order. Click on any cake to customize your perfect order!
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {cakes.map((cake) => (
-          <div key={cake.id} className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 cursor-pointer"
-               onClick={() => handleCakeSelect(cake)}>
-            {cake.popular && (
-              <div className="bg-pink-500 text-white px-3 py-1 text-sm font-bold absolute z-10 m-4 rounded-full">
-                Popular!
+      {/* Interactive Gallery Slider */}
+      <div className="relative mb-12">
+        <div className="overflow-hidden rounded-2xl">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {Array.from({ length: Math.ceil(cakes.length / 3) }).map((_, slideIndex) => (
+              <div key={slideIndex} className="w-full flex-shrink-0">
+                <div className="grid md:grid-cols-3 gap-6 px-4">
+                  {cakes.slice(slideIndex * 3, slideIndex * 3 + 3).map((cake) => (
+                    <div key={cake.id} className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 cursor-pointer"
+                         onClick={() => handleCakeSelect(cake)}>
+                      {cake.special && (
+                        <div className="bg-purple-500 text-white px-3 py-1 text-sm font-bold absolute z-10 m-4 rounded-full">
+                          Special Recipe!
+                        </div>
+                      )}
+                      <div className="relative">
+                        <img src={cake.image} alt={cake.name} className="w-full h-64 object-cover" />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition duration-300 flex items-center justify-center">
+                          <button className="bg-pink-600 text-white px-6 py-2 rounded-full opacity-0 hover:opacity-100 transition duration-300 transform hover:scale-105">
+                            Customize Now
+                          </button>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">{cake.name}</h3>
+                        <p className="text-gray-600 mb-4">{cake.description}</p>
+                        <div className="flex justify-between items-center">
+                          <span className="text-2xl font-bold text-pink-600">Starting at ${cake.basePrice}</span>
+                          <button className="bg-pink-100 text-pink-600 px-4 py-2 rounded-full hover:bg-pink-200 transition duration-300">
+                            Order →
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            )}
-            <div className="relative">
-              <img src={cake.image} alt={cake.name} className="w-full h-64 object-cover" />
-              <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition duration-300 flex items-center justify-center">
-                <button className="bg-pink-600 text-white px-6 py-2 rounded-full opacity-0 hover:opacity-100 transition duration-300 transform hover:scale-105">
-                  Customize Now
-                </button>
-              </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">{cake.name}</h3>
-              <p className="text-gray-600 mb-4">{cake.description}</p>
-              <div className="flex justify-between items-center">
-                <span className="text-2xl font-bold text-pink-600">Starting at ${cake.basePrice}</span>
-                <button className="bg-pink-100 text-pink-600 px-4 py-2 rounded-full hover:bg-pink-200 transition duration-300">
-                  Customize →
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* Navigation buttons */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-3 hover:bg-pink-50 transition duration-300"
+        >
+          <ChevronLeft className="w-6 h-6 text-pink-600" />
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-3 hover:bg-pink-50 transition duration-300"
+        >
+          <ChevronRight className="w-6 h-6 text-pink-600" />
+        </button>
+
+        {/* Slide indicators */}
+        <div className="flex justify-center mt-6 space-x-2">
+          {Array.from({ length: Math.ceil(cakes.length / 3) }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition duration-300 ${
+                currentSlide === index ? 'bg-pink-600' : 'bg-pink-200'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Custom Order Section */}
       <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl text-white p-8 text-center">
-        <h2 className="text-3xl font-bold mb-4">Don't See What You Want?</h2>
-        <p className="text-lg mb-6">We can make almost anything! Heart shapes, long cakes, muffins, pastries, and more.</p>
-        <a href="https://wa.me/1234567890" className="bg-white text-pink-600 px-8 py-3 rounded-full text-lg font-bold hover:bg-pink-50 transform hover:scale-105 transition duration-300 inline-flex items-center space-x-2">
+        <h2 className="text-3xl font-bold mb-4">Don't See Your Flavor?</h2>
+        <p className="text-lg mb-6">We can make almost any flavor! Heart shapes, long cakes, special designs, and more.</p>
+        <a href="https://wa.me/14274301131" className="bg-white text-pink-600 px-8 py-3 rounded-full text-lg font-bold hover:bg-pink-50 transform hover:scale-105 transition duration-300 inline-flex items-center space-x-2">
           <MessageCircle className="w-5 h-5" />
           <span>Request Custom Order</span>
         </a>
@@ -317,39 +436,49 @@ const MenuPage = ({ setSelectedCake, setCurrentPage }) => {
 
 const CakeBuilder = ({ selectedCake, cakeBuilder, setCakeBuilder, setCurrentPage }) => {
   const sizes = [
-    { name: '6-inch', servings: '6-8', priceMultiplier: 1 },
-    { name: '8-inch', servings: '10-12', priceMultiplier: 1.5 },
-    { name: '10-inch', servings: '15-20', priceMultiplier: 2 },
-    { name: '12-inch', servings: '25-30', priceMultiplier: 2.5 }
+    { name: '6-inch', servings: '5-6', priceMultiplier: 1 },
+    { name: '8-inch', servings: '10-12', priceMultiplier: 1.33 },
+    { name: '10-inch', servings: '15-20', priceMultiplier: 1.78 },
+    { name: '12-inch', servings: '25-30', priceMultiplier: 2.22 }
   ];
 
   const calculatePrice = () => {
-    const basePrice = selectedCake?.basePrice || 50;
+    if (!selectedCake) return 0;
+    
+    const basePrice = selectedCake.name === 'Cheesecake' ? selectedCake.cheesecakePrice : selectedCake.basePrice;
     const sizeMultiplier = sizes.find(s => s.name === cakeBuilder.size)?.priceMultiplier || 1;
-    const layerMultiplier = cakeBuilder.layers;
-    return Math.round(basePrice * sizeMultiplier * layerMultiplier);
+    
+    if (selectedCake.name === 'Cheesecake') {
+      // Special pricing for cheesecake
+      if (cakeBuilder.size === '6-inch') return 55;
+      if (cakeBuilder.size === '8-inch') return 75; // 55 + 20
+      if (cakeBuilder.size === '10-inch') return 95; // 55 + 40
+      if (cakeBuilder.size === '12-inch') return 115; // 55 + 60
+    }
+    
+    return Math.round(basePrice * sizeMultiplier);
   };
 
   const handleOrderSubmit = () => {
     const orderDetails = `
-🎂 CAKE ORDER - Ammy Bakers
+🎂 CAKE ORDER - Ammy Bakers 111
 
-Cake: ${selectedCake.name}
+Cake Flavor: ${selectedCake.name}
 Size: ${cakeBuilder.size} (${cakeBuilder.servings} servings)
-Layers: ${cakeBuilder.layers}
-Special Instructions: ${cakeBuilder.description}
+Layers: 3 layers (standard)
+Special Instructions: ${cakeBuilder.description || 'None'}
 
 Estimated Price: $${calculatePrice()}
 
 Please confirm the final price and design details. Thank you!
     `;
     
-    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(orderDetails)}`;
+    const whatsappUrl = `https://wa.me/14274301131?text=${encodeURIComponent(orderDetails)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   if (!selectedCake) {
-    setCurrentPage('menu');
+    setCurrentPage('gallery');
     return null;
   }
 
@@ -358,23 +487,25 @@ Please confirm the final price and design details. Thank you!
       <div className="bg-white rounded-3xl shadow-xl p-8">
         <div className="flex items-center mb-8">
           <button 
-            onClick={() => setCurrentPage('menu')}
+            onClick={() => setCurrentPage('gallery')}
             className="text-pink-600 hover:text-pink-700 font-medium flex items-center space-x-2"
           >
-            ← Back to Menu
+            ← Back to Gallery
           </button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <img src={selectedCake.image} alt={selectedCake.name} className="w-full h-64 object-cover rounded-2xl mb-4" />
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">{selectedCake.name}</h1>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">{selectedCake.name} Cake</h1>
             <p className="text-gray-600 mb-4">{selectedCake.description}</p>
             <div className="bg-pink-50 p-4 rounded-xl">
-              <h3 className="font-bold text-pink-700 mb-2">Your Customization:</h3>
+              <h3 className="font-bold text-pink-700 mb-2">Your Order:</h3>
               <ul className="space-y-1 text-gray-700">
+                <li>Flavor: {selectedCake.name}</li>
                 <li>Size: {cakeBuilder.size} ({cakeBuilder.servings} servings)</li>
-                <li>Layers: {cakeBuilder.layers}</li>
+                <li>Layers: 3 layers (standard)</li>
+                <li>Decorations: Cream frosting included</li>
                 <li className="text-2xl font-bold text-pink-600 mt-4">Total: ${calculatePrice()}</li>
               </ul>
             </div>
@@ -396,34 +527,20 @@ Please confirm the final price and design details. Thank you!
                     }`}
                   >
                     <div className="font-semibold">{size.name}</div>
-                    <div className="text-sm text-gray-600">{size.servings}</div>
+                    <div className="text-sm text-gray-600">{size.servings} servings</div>
+                    <div className="text-sm font-bold text-pink-600">
+                      ${selectedCake.name === 'Cheesecake' 
+                        ? (() => {
+                            if (size.name === '6-inch') return 55;
+                            if (size.name === '8-inch') return 75;
+                            if (size.name === '10-inch') return 95;
+                            if (size.name === '12-inch') return 115;
+                          })()
+                        : Math.round(selectedCake.basePrice * size.priceMultiplier)
+                      }
+                    </div>
                   </button>
                 ))}
-              </div>
-            </div>
-
-            {/* Layers */}
-            <div>
-              <label className="block text-lg font-semibold text-gray-800 mb-3">Number of Layers:</label>
-              <div className="flex items-center space-x-4">
-                <button
-                  onClick={() => setCakeBuilder({...cakeBuilder, layers: Math.max(1, cakeBuilder.layers - 1)})}
-                  className="bg-pink-100 text-pink-600 p-2 rounded-full hover:bg-pink-200 transition duration-300"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <div className="bg-pink-50 px-6 py-2 rounded-xl">
-                  <span className="text-xl font-bold text-pink-700 flex items-center space-x-2">
-                    <Layers className="w-5 h-5" />
-                    <span>{cakeBuilder.layers}</span>
-                  </span>
-                </div>
-                <button
-                  onClick={() => setCakeBuilder({...cakeBuilder, layers: Math.min(5, cakeBuilder.layers + 1)})}
-                  className="bg-pink-100 text-pink-600 p-2 rounded-full hover:bg-pink-200 transition duration-300"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
               </div>
             </div>
 
@@ -433,10 +550,13 @@ Please confirm the final price and design details. Thank you!
               <textarea
                 value={cakeBuilder.description}
                 onChange={(e) => setCakeBuilder({...cakeBuilder, description: e.target.value})}
-                placeholder="Describe any special decorations, colors, or text you'd like..."
+                placeholder="Describe any special decorations, colors, text, fondant work, or designs you'd like..."
                 className="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-pink-500 focus:outline-none transition duration-300"
                 rows={4}
               />
+              <p className="text-sm text-gray-500 mt-2">
+                💡 Base price includes 3 layers with cream decorations. Mention if you want fondant work or special designs!
+              </p>
             </div>
 
             {/* Image Upload Placeholder */}
@@ -481,11 +601,17 @@ const ContactPage = () => (
             </div>
             <div>
               <h3 className="font-semibold text-gray-800 mb-2">Address</h3>
-              <p className="text-gray-600">
+              <a 
+                href="https://share.google/lUtx7y1hy1ozOGatb" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-pink-600 transition duration-300 cursor-pointer"
+              >
                 31 Horwood Dr<br />
                 Brampton, ON L6X 2C2<br />
                 Canada
-              </p>
+              </a>
+              <p className="text-gray-500 text-sm mt-1">Click to open in Google Maps</p>
             </div>
           </div>
 
@@ -495,8 +621,8 @@ const ContactPage = () => (
             </div>
             <div>
               <h3 className="font-semibold text-gray-800 mb-2">WhatsApp</h3>
-              <a href="https://wa.me/1234567890" className="text-green-600 hover:text-green-700 transition duration-300">
-                +1 (234) 567-8900
+              <a href="https://wa.me/14274301131" className="text-green-600 hover:text-green-700 transition duration-300">
+                (427) 430-1131
               </a>
               <p className="text-gray-500 text-sm mt-1">Click to chat with us!</p>
             </div>
@@ -508,7 +634,9 @@ const ContactPage = () => (
             </div>
             <div>
               <h3 className="font-semibold text-gray-800 mb-2">Instagram</h3>
-              <p className="text-gray-600">@ammybakers (coming soon!)</p>
+              <a href="https://instagram.com/ammybakers111" className="text-purple-600 hover:text-purple-700 transition duration-300">
+                @ammybakers111
+              </a>
               <p className="text-gray-500 text-sm mt-1">Follow us for daily cake inspiration</p>
             </div>
           </div>
@@ -517,16 +645,8 @@ const ContactPage = () => (
             <h3 className="font-bold text-pink-700 mb-3">Business Hours</h3>
             <div className="space-y-2 text-gray-700">
               <div className="flex justify-between">
-                <span>Monday - Friday:</span>
-                <span>9:00 AM - 7:00 PM</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Saturday:</span>
-                <span>10:00 AM - 6:00 PM</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Sunday:</span>
-                <span>12:00 PM - 5:00 PM</span>
+                <span>Every Day:</span>
+                <span>7:00 AM - 7:00 PM</span>
               </div>
             </div>
           </div>
@@ -538,7 +658,7 @@ const ContactPage = () => (
             The easiest way to place an order is through WhatsApp. We'll help you create the perfect cake for your special occasion!
           </p>
           <div className="space-y-4">
-            <a href="https://wa.me/1234567890" className="block w-full bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl text-center font-semibold transform hover:scale-105 transition duration-300">
+            <a href="https://wa.me/14274301131" className="block w-full bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl text-center font-semibold transform hover:scale-105 transition duration-300">
               <div className="flex items-center justify-center space-x-2">
                 <MessageCircle className="w-5 h-5" />
                 <span>Start WhatsApp Chat</span>
@@ -549,7 +669,7 @@ const ContactPage = () => (
             </div>
             <button 
               className="block w-full bg-white text-pink-600 py-3 px-6 rounded-xl text-center font-semibold hover:bg-pink-50 transform hover:scale-105 transition duration-300"
-              onClick={() => window.location.href = 'tel:+12345678900'}
+              onClick={() => window.location.href = 'tel:+14274301131'}
             >
               Call Us Directly
             </button>
