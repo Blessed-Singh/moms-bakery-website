@@ -1,6 +1,50 @@
 import React, { useState } from 'react';
 import { Home, Cake, Mail, MapPin, Phone, Instagram, Star, Plus, Minus, Upload, MessageCircle, Heart, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
+// Floating Particles Component (Desktop Only)
+const FloatingParticles = () => {
+  const [particles, setParticles] = useState([]);
+
+  React.useEffect(() => {
+    const createParticles = () => {
+      const newParticles = [];
+      for (let i = 0; i < 15; i++) {
+        newParticles.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 20 + 10,
+          delay: Math.random() * 5,
+          duration: Math.random() * 10 + 15,
+          icon: ['🎂', '🧁', '🍰', '🎈', '✨', '💕', '🌟'][Math.floor(Math.random() * 7)]
+        });
+      }
+      setParticles(newParticles);
+    };
+
+    createParticles();
+  }, []);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 hidden lg:block">
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="absolute animate-bounce opacity-30"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            fontSize: `${particle.size}px`,
+            animationDelay: `${particle.delay}s`,
+            animationDuration: `${particle.duration}s`
+          }}
+        >
+          {particle.icon}
+        </div>
+      ))}
+    </div>
+  );
+};
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedCake, setSelectedCake] = useState(null);
@@ -110,6 +154,7 @@ const HomePage = ({ setCurrentPage }) => {
     <div className="space-y-16">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 text-white py-20">
+<FloatingParticles />
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-6xl font-extrabold mb-6 leading-tight">
             Welcome to Ammy Bakers 111
@@ -181,6 +226,7 @@ const HomePage = ({ setCurrentPage }) => {
       </section>
       <section className="max-w-7xl mx-auto px-6">
         <div className="bg-white rounded-3xl shadow-xl p-12 transform hover:scale-105 transition duration-500">
+<FloatingParticles />
           <h2 className="text-4xl font-bold text-pink-700 mb-8 text-center">Why Choose Ammy Bakers 111?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
@@ -629,7 +675,8 @@ Please confirm the final price and design details. Thank you!
 
 const ContactPage = () => (
   <div className="max-w-4xl mx-auto px-6 py-12">
-    <div className="bg-white rounded-3xl shadow-xl p-12">
+    <div className="bg-white rounded-3xl shadow-xl p-12 relative overflow-hidden">
+        <FloatingParticles />
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-pink-700 mb-6">Get In Touch</h1>
         <p className="text-xl text-gray-600">
