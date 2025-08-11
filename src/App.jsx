@@ -45,6 +45,67 @@ const FloatingParticles = () => {
     </div>
   );
 };
+// 3D Cake Size Visualizer Component
+const CakeSizeVisualizer = ({ selectedSize }) => {
+  const sizes = [
+    { name: '12-inch', width: 200, height: 60, color: 'from-yellow-200 to-yellow-300', top: 240 },
+    { name: '10-inch', width: 160, height: 50, color: 'from-pink-200 to-pink-300', top: 190 },
+    { name: '8-inch', width: 120, height: 40, color: 'from-purple-200 to-purple-300', top: 150 },
+    { name: '6-inch', width: 80, height: 30, color: 'from-rose-200 to-rose-300', top: 120 }
+  ];
+
+  return (
+    <div className="flex justify-center items-center h-80 relative">
+      <div className="relative">
+
+
+        {/* Stacked Cakes */}
+        {sizes.map((size, index) => {
+          const isSelected = selectedSize === size.name;
+          return (
+            <div key={size.name} className="absolute left-1/2 transform -translate-x-1/2" style={{ bottom: `${size.top - 200}px` }}>
+              {/* Cake Top (Ellipse) */}
+              <div 
+                className={`rounded-full transition-all duration-500 ${
+                  isSelected 
+                    ? `bg-gradient-to-r ${size.color} ring-4 ring-pink-400 ring-opacity-70 shadow-2xl scale-110` 
+                    : `bg-gradient-to-r ${size.color} shadow-lg opacity-80`
+                }`}
+                style={{ 
+                  width: `${size.width}px`, 
+                  height: `${size.height * 0.3}px`,
+                  marginLeft: `-${size.width/2}px`
+                }}
+              />
+              
+              {/* Cake Side */}
+              <div 
+                className={`transition-all duration-500 ${
+                  isSelected 
+                    ? `bg-gradient-to-b ${size.color} ring-4 ring-pink-400 ring-opacity-70 shadow-2xl scale-110` 
+                    : `bg-gradient-to-b ${size.color} shadow-lg opacity-80`
+                }`}
+                style={{ 
+                  width: `${size.width}px`, 
+                  height: `${size.height}px`,
+                  marginLeft: `-${size.width/2}px`,
+                  marginTop: `-${size.height * 0.15}px`
+                }}
+              />
+              
+              {/* Size Label */}
+              {isSelected && (
+                <div className="absolute -right-16 top-1/2 transform -translate-y-1/2 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                  {size.name}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedCake, setSelectedCake] = useState(null);
@@ -573,7 +634,7 @@ Please confirm the final price and design details. Thank you!
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="bg-white rounded-3xl shadow-xl p-8">
         <div className="flex items-center mb-8">
           <button 
@@ -584,41 +645,81 @@ Please confirm the final price and design details. Thank you!
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Top Section - Image and Order Summary Side by Side */}
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {/* Left - Image */}
           <div>
-            <img src={selectedCake.image} alt={selectedCake.name} className="w-full h-64 object-cover rounded-2xl mb-4" />
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">{selectedCake.name} Cake</h1>
-            <p className="text-gray-600 mb-4">{selectedCake.description}</p>
-            <div className="bg-pink-50 p-4 rounded-xl">
-              <h3 className="font-bold text-pink-700 mb-2">Your Order:</h3>
-              <ul className="space-y-1 text-gray-700">
-                <li>Flavor: {selectedCake.name}</li>
-                <li>Size: {cakeBuilder.size} ({cakeBuilder.servings} servings)</li>
-                <li>Layers: 3 layers (standard)</li>
-                <li>Decorations: Cream frosting included</li>
-                <li className="text-2xl font-bold text-pink-600 mt-4">Total: ${calculatePrice()}</li>
+            <img src={selectedCake.image} alt={selectedCake.name} className="w-full h-80 object-cover rounded-2xl" />
+          </div>
+
+          {/* Right - Order Summary and Title */}
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-4xl font-bold text-gray-800 mb-3">{selectedCake.name} Cake</h1>
+              <p className="text-gray-600 text-lg">{selectedCake.description}</p>
+            </div>
+
+            <div className="bg-pink-50 p-6 rounded-xl">
+              <h3 className="font-bold text-pink-700 mb-4 text-xl">Your Order Summary:</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex justify-between">
+                  <span>Flavor:</span>
+                  <span className="font-medium">{selectedCake.name}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Size:</span>
+                  <span className="font-medium">{cakeBuilder.size} ({cakeBuilder.servings} servings)</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Layers:</span>
+                  <span className="font-medium">3 layers (standard)</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Decorations:</span>
+                  <span className="font-medium">Cream frosting included</span>
+                </li>
+                <li className="flex justify-between items-center pt-3 border-t border-pink-200">
+                  <span className="text-xl font-bold">Total:</span>
+                  <span className="text-2xl font-bold text-pink-600">${calculatePrice()}</span>
+                </li>
               </ul>
             </div>
           </div>
+        </div>
 
-          <div className="space-y-6">
-            {/* Size Selection */}
-            <div>
-              <label className="block text-lg font-semibold text-gray-800 mb-3">Choose Size:</label>
-              <div className="grid grid-cols-2 gap-3">
-                {sizes.map((size) => (
-                  <button
-                    key={size.name}
-                    onClick={() => setCakeBuilder({...cakeBuilder, size: size.name, servings: size.servings})}
-                    className={`p-3 rounded-xl border-2 transition duration-300 ${
-                      cakeBuilder.size === size.name 
-                        ? 'border-pink-500 bg-pink-50 text-pink-700' 
-                        : 'border-gray-300 hover:border-pink-300'
-                    }`}
-                  >
-                    <div className="font-semibold">{size.name}</div>
-                    <div className="text-sm text-gray-600">{size.servings} servings</div>
-                    <div className="text-sm font-bold text-pink-600">
+        {/* Size Visualizer and Selection Section */}
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {/* Left - Size Visualizer */}
+          <div>
+            <label className="block text-xl font-bold text-gray-800 mb-4 text-center">Cake Size Comparison:</label>
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-4" style={{ height: '300px' }}>
+              <CakeSizeVisualizer selectedSize={cakeBuilder.size} />
+              <p className="text-center text-gray-600 mt-2 text-sm">
+                👆 {cakeBuilder.size} is highlighted in pink!
+              </p>
+            </div>
+          </div>
+
+          {/* Right - Size Selection */}
+          <div>
+            <label className="block text-xl font-bold text-gray-800 mb-4">Choose Size:</label>
+            <div className="grid grid-cols-1 gap-3">
+              {sizes.map((size) => (
+                <button
+                  key={size.name}
+                  onClick={() => setCakeBuilder({...cakeBuilder, size: size.name, servings: size.servings})}
+                  className={`p-4 rounded-xl border-2 transition duration-300 ${
+                    cakeBuilder.size === size.name 
+                      ? 'border-pink-500 bg-pink-50 text-pink-700 ring-2 ring-pink-200' 
+                      : 'border-gray-300 hover:border-pink-300'
+                  }`}
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <div className="font-bold text-lg text-left">{size.name}</div>
+                      <div className="text-gray-600 text-left">{size.servings} servings</div>
+                    </div>
+                    <div className="font-bold text-pink-600 text-xl">
                       ${selectedCake.name === 'Cheesecake' 
                         ? (() => {
                             if (size.name === '6-inch') return 55;
@@ -629,51 +730,53 @@ Please confirm the final price and design details. Thank you!
                         : Math.round(selectedCake.basePrice * size.priceMultiplier)
                       }
                     </div>
-                  </button>
-                ))}
-              </div>
+                  </div>
+                </button>
+              ))}
             </div>
-
-            {/* Special Instructions */}
-            <div>
-              <label className="block text-lg font-semibold text-gray-800 mb-3">Special Instructions:</label>
-              <textarea
-                value={cakeBuilder.description}
-                onChange={(e) => setCakeBuilder({...cakeBuilder, description: e.target.value})}
-                placeholder="Describe any special decorations, colors, text, fondant work, or designs you'd like..."
-                className="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-pink-500 focus:outline-none transition duration-300"
-                rows={4}
-              />
-              <p className="text-sm text-gray-500 mt-2">
-                💡 Base price includes 3 layers with cream decorations. Mention if you want fondant work or special designs!
-              </p>
-            </div>
-
-            {/* Image Upload Placeholder */}
-            <div>
-              <label className="block text-lg font-semibold text-gray-800 mb-3">Reference Images (Optional):</label>
-              <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center">
-                <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-500">You can share reference images via WhatsApp</p>
-              </div>
-            </div>
-
-            {/* Order Button */}
-            <button
-              onClick={handleOrderSubmit}
-              className="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-4 rounded-xl text-xl font-bold hover:from-pink-600 hover:to-rose-600 transform hover:scale-105 transition duration-300 flex items-center justify-center space-x-2"
-            >
-              <MessageCircle className="w-6 h-6" />
-              <span>Send Order via WhatsApp</span>
-            </button>
           </div>
         </div>
+
+        {/* Special Instructions and Reference Images Section */}
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {/* Left - Special Instructions */}
+          <div>
+            <label className="block text-xl font-bold text-gray-800 mb-4">Special Instructions:</label>
+            <textarea
+              value={cakeBuilder.description}
+              onChange={(e) => setCakeBuilder({...cakeBuilder, description: e.target.value})}
+              placeholder="Describe any special decorations, colors, text, fondant work, or designs you'd like..."
+              className="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-pink-500 focus:outline-none transition duration-300"
+              rows={6}
+            />
+            <p className="text-sm text-gray-500 mt-3">
+              💡 Base price includes 3 layers with cream decorations. Mention if you want fondant work or special designs!
+            </p>
+          </div>
+
+          {/* Right - Reference Images */}
+          <div>
+            <label className="block text-xl font-bold text-gray-800 mb-4">Reference Images (Optional):</label>
+            <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center h-full flex flex-col justify-center">
+              <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+              <p className="text-gray-500">You can share reference images via WhatsApp</p>
+              <p className="text-gray-400 text-sm mt-2">Show us exactly what design you have in mind!</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Order Button - Full Width */}
+        <button
+          onClick={handleOrderSubmit}
+          className="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-5 rounded-xl text-xl font-bold hover:from-pink-600 hover:to-rose-600 transform hover:scale-105 transition duration-300 flex items-center justify-center space-x-3 shadow-lg"
+        >
+          <MessageCircle className="w-6 h-6" />
+          <span>Send Order via WhatsApp</span>
+        </button>
       </div>
     </div>
   );
-};
-
-const ContactPage = () => (
+};const ContactPage = () => (
   <div className="max-w-4xl mx-auto px-6 py-12">
     <div className="bg-white rounded-3xl shadow-xl p-12 relative overflow-hidden">
         <FloatingParticles />
