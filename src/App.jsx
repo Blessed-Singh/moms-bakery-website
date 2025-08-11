@@ -135,6 +135,50 @@ const HomePage = ({ setCurrentPage }) => {
       </section>
 
       {/* About Section */}
+{/* Instagram Promotion Section */}
+      <section className="max-w-7xl mx-auto px-6">
+        <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 rounded-3xl text-white p-12 text-center">
+          <h2 className="text-4xl font-bold mb-6">See All Our Amazing Cakes!</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Our gallery shows just a few flavors, but we've made hundreds of beautiful custom cakes! 
+            Follow our Instagram to see them all - from birthday cakes to wedding masterpieces.
+          </p>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+            <div className="text-center">
+              <div className="bg-white bg-opacity-20 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                <Instagram className="w-12 h-12" />
+              </div>
+              <p className="text-lg font-semibold">100+ Custom Cakes</p>
+              <p className="text-pink-100">See our latest creations</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-white bg-opacity-20 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                <Heart className="w-12 h-12" />
+              </div>
+              <p className="text-lg font-semibold">Happy Customers</p>
+              <p className="text-pink-100">Real photos, real reviews</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-white bg-opacity-20 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                <Cake className="w-12 h-12" />
+              </div>
+              <p className="text-lg font-semibold">Behind the Scenes</p>
+              <p className="text-pink-100">Watch the magic happen</p>
+            </div>
+          </div>
+
+          <a 
+            href="https://instagram.com/ammybakers111" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-3 bg-white text-pink-600 px-8 py-4 rounded-full text-xl font-bold hover:bg-pink-50 transform hover:scale-105 transition duration-300 shadow-lg"
+          >
+            <Instagram className="w-6 h-6" />
+            <span>Follow @ammybakers111 on Instagram</span>
+          </a>
+        </div>
+      </section>
       <section className="max-w-7xl mx-auto px-6">
         <div className="bg-white rounded-3xl shadow-xl p-12 transform hover:scale-105 transition duration-500">
           <h2 className="text-4xl font-bold text-pink-700 mb-8 text-center">Why Choose Ammy Bakers 111?</h2>
